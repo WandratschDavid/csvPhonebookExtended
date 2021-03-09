@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewcontroller.PhonebookC">
+    <children>
+        <GridPane hgap="10.0" vgap="10.0" VBox.vgrow="NEVER">
+            <children>
+                <Label text="Name:" GridPane.hgrow="NEVER" GridPane.rowIndex="0" />
+                <TextField fx:id="tfName" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
+                <Label text="Address:" GridPane.rowIndex="1" />
+                <TextField fx:id="tfAddress" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Phone:" GridPane.rowIndex="2" />
+                <TextField fx:id="tfPhone" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+        </GridPane>
+
+        <HBox spacing="10.0" VBox.vgrow="NEVER">
+            <children>
+                <Button fx:id="btPrev" onAction="#btPrevOnAction" text="&lt;" />
+                <Text fx:id="txIndex" text="?" />
+                <Text text="/" />
+                <Text fx:id="txSize" text="?" />
+                <Button fx:id="btNext" onAction="#btNextOnAction" text="&gt;" />
+            </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+        </HBox>
+
+        <HBox spacing="10.0" VBox.vgrow="NEVER">
+            <children>
+                <Button fx:id="btNew" onAction="#btNewOnAction" text="New" />
+                <Button fx:id="btDel" onAction="#btDelOnAction" text="Delete" />
+                <Button fx:id="btSave" onAction="#btSaveOnAction" text="Save" />
+            </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+        </HBox>
+        <HBox spacing="10.0" VBox.vgrow="NEVER">
+            <children>
+                <Button fx:id="btLoadCsv" onAction="#btLoadCsvOnAction" text="Load from DB" />
+                <Button fx:id="btSaveCsv" onAction="#btSaveCsvOnAction" text="Save to DB" />
+            </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+        </HBox>
+    </children>
+</VBox>
