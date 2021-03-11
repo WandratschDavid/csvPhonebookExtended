@@ -8,21 +8,24 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class PersonTest {
+class PersonTest
+{
   Phonebook pb;
   Person p;
   Person q;
   
   @BeforeEach
-  void setup() {
-    pb = new Phonebook(new File("S:\\0pgm\\db\\personTest.csv"));
+  void setup() throws PhonebookException
+  {
+    pb = new Phonebook(new File("D:\\Schuljahr 2020_21\\SEW\\Exercises\\csvPhonebookEnhanced\\files\\personTest.csv"));
     
     p = new Person(pb, "Widmann", "Platz 1", "4711");
     q = new Person(pb, "Mayer", "123");
   }
   
   @Test
-  void compareTo() {
+  void compareTo() throws PhonebookException
+  {
     Person q = new Person(pb, "Mayer", "123");
     Person s = new Person(pb, "Widmann", "358256875628756");
     
@@ -32,7 +35,8 @@ class PersonTest {
   }
   
   @Test
-  void prev() {
+  void prev() throws PhonebookException
+  {
     assertEquals(q, p.prev());
     
     Person r;
@@ -51,7 +55,8 @@ class PersonTest {
   }
   
   @Test
-  void next() {
+  void next() throws PhonebookException
+  {
     assertEquals(p, q.next());
   
     Person r;
@@ -70,16 +75,18 @@ class PersonTest {
   }
   
   @Test
-  void parseFromCsv() {
-    assertEquals(p, Person.fromCsvString(pb, "Widmann;Platz 1;4711"));
-    assertEquals(q, Person.fromCsvString(pb, "Mayer;;123"));
-    
-    Person r = new Person(pb, "c","");
-    assertEquals(r, Person.fromCsvString(pb, "c;;"));
+  void parseFromCsv() throws PhonebookException
+  {
+      assertEquals(p, Person.fromCsvString(pb, "Widmann;Platz 1;4711"));
+      assertEquals(q, Person.fromCsvString(pb, "Mayer;;123"));
+
+      Person r = new Person(pb, "c","");
+      assertEquals(r, Person.fromCsvString(pb, "c;;"));
   }
   
   @Test
-  void saveToCsv() {
+  void saveToCsv()
+  {
     assertEquals("Widmann;Platz 1;4711", p.toCsvString());
     assertEquals("Mayer;;123", q.toCsvString());
   }
