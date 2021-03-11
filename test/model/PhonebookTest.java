@@ -8,15 +8,14 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class PhonebookTest
-{
+class PhonebookTest {
   Phonebook pb;
   Person p1, p2, p3, p4;
-
+  
+  
   @BeforeEach
-  void setup() throws PhonebookException
-  {
-    pb = new Phonebook(new File("D:\\Schuljahr 2020_21\\SEW\\Exercises\\csvPhonebookEnhanced\\files\\phonebookTest.csv"));
+  void setup() {
+    pb = new Phonebook(new File("S:\\0pgm\\db\\phonebookTest.csv"));
     
     p1 = new Person(pb, "Widmann", "1657126517457154765");
     p2 = new Person(pb, "Mayer", "1555557154765");
@@ -49,11 +48,11 @@ class PhonebookTest
   }
   
   @Test
-  void loadFromCsv() throws PhonebookException{
-    File db = new File("D:\\Schuljahr 2020_21\\SEW\\Exercises\\csvPhonebookEnhanced\\files\\phonebookLoadTest.csv");
-
+  void loadFromCsv() {
+    File db = new File("S:\\0pgm\\db\\phonebookLoadTest.csv");
+    
     pb.loadFromCsv(db);
-
+    
     assertEquals(2, pb.size());
     assertFalse(pb.containsPerson(p1));
     assertFalse(pb.containsPerson(p2));
@@ -62,9 +61,8 @@ class PhonebookTest
   }
   
   @Test
-  void saveToCsv()
-  {
-    File db = new File("D:\\Schuljahr 2020_21\\SEW\\Exercises\\csvPhonebookEnhanced\\files\\phonebookSaveTest.csv");
+  void saveToCsv() {
+    File db = new File("S:\\0pgm\\db\\phonebookSaveTest.csv");
     
     pb.saveToCsv(db);
     
@@ -80,8 +78,7 @@ class PhonebookTest
   }
   
   @Test
-  void indexPerson() throws PhonebookException
-  {
+  void indexPerson() {
     assertEquals(1, pb.indexPerson(p3));
     assertEquals(2, pb.indexPerson(p2));
     assertEquals(3, pb.indexPerson(p1));

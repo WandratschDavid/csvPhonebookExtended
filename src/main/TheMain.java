@@ -6,12 +6,17 @@ import viewcontroller.PhonebookC;
 
 import java.io.File;
 
+/**
+ * @author David Wandratsch
+ * @version 1.0
+ */
+
 public class TheMain extends Application
 {
     @Override
     public void start(Stage primaryStage)
     {
-        File db = new File("D:\\Schuljahr 2020_21\\SEW\\Exercises\\csvPhonebookEnhanced\\db\\phonebook.csv");
+        File db = new File("phonebook.csv");
         PhonebookC.show(primaryStage, db);
     }
 

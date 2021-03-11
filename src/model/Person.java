@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * @author David Wandratsch
+ * @version 1.0
+ */
+
 public class Person implements Comparable
 {
     private String name;
@@ -8,16 +13,17 @@ public class Person implements Comparable
 
     private Phonebook phonebook;
 
-    public static Person fromCsvString(Phonebook phonebook, String csv) throws PhonebookException
+    public static Person fromCsvString(Phonebook phonebook, String csv)
     {
         String[] cells = csv.split(";");
 
-        return new Person(phonebook, (cells.length >= 1 && !cells[0].isEmpty() ? cells[0] : ""),
+        return new Person(phonebook,
+                (cells.length >= 1 && !cells[0].isEmpty() ? cells[0] : ""),
                 (cells.length >= 2 && !cells[1].isEmpty() ? cells[1] : null),
                 (cells.length >= 3 && !cells[2].isEmpty() ? cells[2] : ""));
     }
 
-    public Person(Phonebook phonebook, String name, String address, String phone) throws PhonebookException
+    public Person(Phonebook phonebook, String name, String address, String phone)
     {
         setName(name);
         setAddress(address);
@@ -25,80 +31,57 @@ public class Person implements Comparable
 
         // automatically add person to phonebook
         setPhonebook(phonebook);
+        setPhonebook(phonebook);
         phonebook.addPerson(this);
     }
 
-    public Person(Phonebook phonebook, String name, String phone) throws PhonebookException
+    public Person(Phonebook phonebook, String name, String phone)
     {
         this(phonebook, name, null, phone);
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name) throws PhonebookException
-    {
-        name = name.trim();
-        
-        if(name == null || isNumber(name))
-        {
-            throw new PhonebookException("Bitte geben Sie einen Namen ein!");
-        }
-        
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getAddress()
-    {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address)
-    {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getPhone()
-    {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) throws PhonebookException{
-        phone = phone.trim();
-        
-        if(phone.isBlank() || !isNumber(phone))
-        {
-            throw new PhonebookException("Bitte geben Sie eine Telefonnummer ein!");
-        }
-        else if(!phone.matches("^[0-9]+$"))
-        {
-            throw new PhonebookException("Bitte geben Sie nur Ziffern ein!");
-        }
-        else{this.phone = phone;}
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Phonebook getPhonebook()
-    {
+    public Phonebook getPhonebook() {
         return phonebook;
     }
 
-    private void setPhonebook(Phonebook phonebook)
-    {
+    private void setPhonebook(Phonebook phonebook) {
         this.phonebook = phonebook;
     }
 
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return name;
     }
 
     @Override
-    public int compareTo(Object o)
-    {
+    public int compareTo(Object o) {
         Person other = (Person) o;
+
         return name.compareTo(other.name);
     }
 
@@ -153,26 +136,8 @@ public class Person implements Comparable
 
     public String toCsvString()
     {
-        return name + ";" + (address != null ? address : "") + ";" + phone;
-    }
-
-    private boolean isNumber(String input)
-    {
-        try
-        {
-            if (!input.isBlank())
-            {
-                int intValue = Integer.parseInt(input);
-                return true;
-            }
-            else
-                return false;
-        }
-        catch (NumberFormatException e)
-        {
-            e.printStackTrace();
-        }
-
-        return false;
+        return name + ";" +
+                (address != null ? address : "") + ";" +
+                phone;
     }
 }
